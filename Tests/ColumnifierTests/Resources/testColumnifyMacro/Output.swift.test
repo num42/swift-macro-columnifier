@@ -1,0 +1,8 @@
+struct Checklist {
+    let name: String
+    let id: UUID
+}
+
+let column = Column("id")
+
+print("The column is \(column)")

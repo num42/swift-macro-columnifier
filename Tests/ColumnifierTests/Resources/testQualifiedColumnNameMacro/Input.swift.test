@@ -1,0 +1,6 @@
+struct Checklist {
+    let name: String
+    let id: UUID
+}
+
+print(#QualifiedColumnName(\Checklist.id))
