@@ -1,4 +1,4 @@
-import CSQLite
+import GRDBSQLite
 import GRDB
 
 @freestanding(expression)
