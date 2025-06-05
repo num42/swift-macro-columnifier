@@ -38,7 +38,7 @@ let package = Package(
       dependencies: [
         .target(name: "\(name)Macros"),
         .product(name: "GRDB", package: "GRDB.swift"),
-        .product(name: "CSQLite", package: "GRDB.swift")
+        .product(name: "GRDBSQLite", package: "GRDB.swift")
       ]
     ),
     // A test target used to develop the macro implementation.
