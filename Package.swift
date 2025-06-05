@@ -19,7 +19,7 @@ let package = Package(
   dependencies: [
     .package(url: "https://github.com/num42/swift-macrotester.git", from: "1.0.2"),
     .package(url: "https://github.com/apple/swift-syntax.git", from: "600.0.1"),
-    .package(url: "https://github.com/groue/GRDB.swift.git", from: "6.29.3")
+    .package(url: "https://github.com/groue/GRDB.swift.git", from: "7.0.0")
   ],
   targets: [
     // Targets are the basic building blocks of a package, defining a module or a test suite.
