@@ -1,3 +1,4 @@
+import Foundation
 import SwiftCompilerPlugin
 import SwiftSyntax
 import SwiftSyntaxBuilder
@@ -12,7 +13,7 @@ public struct ColumnifyMacro: ExpressionMacro {
       fatalError("compiler bug: the macro does not have any arguments")
     }
 
-    let column = argument.as(KeyPathExprSyntax.self)!.components.description.replacingOccurrences(of: ".", with: "")
+      let column = argument.as(KeyPathExprSyntax.self)!.components.description.replacingOccurrences(of: ".", with: "")
 
     return "Column(\"\(raw: column)\")"
   }
