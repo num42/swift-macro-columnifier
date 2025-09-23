@@ -1,7 +1,7 @@
 import MacroTester
 import SwiftSyntaxMacros
 import SwiftSyntaxMacrosTestSupport
-import XCTest
+import Testing
 
 #if canImport(ColumnifierMacros)
   import ColumnifierMacros
@@ -12,12 +12,15 @@ import XCTest
   ]
 #endif
 
-final class ColumnifierTests: XCTestCase {
-  func testColumnifyMacro() throws {
-    testMacro(macros: testMacros)
-  }
+@Suite("Columnifier Macro Tests")
+struct ColumnifierTests {
+    private static let macroTestNames = [
+        "testColumnifyMacro",
+        "testQualifiedColumnNameMacro"
+    ]
 
-  func testQualifiedColumnNameMacro() throws {
-    testMacro(macros: testMacros)
-  }
+    @Test("Check correctness of Macro expansion to their snapshots", arguments: Self.macroTestNames)
+    func macroExpandsCorrectly(testName: String) {
+        MacroTester.testMacro(testName: testName, macros: testMacros)
+    }
 }
