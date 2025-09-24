@@ -14,13 +14,11 @@ import Testing
 
 @Suite("Columnifier Macro Tests")
 struct ColumnifierTests {
-    private static let macroTestNames = [
-        "testColumnifyMacro",
-        "testQualifiedColumnNameMacro"
-    ]
-
-    @Test("Check correctness of Macro expansion to their snapshots", arguments: Self.macroTestNames)
-    func macroExpandsCorrectly(testName: String) {
-        MacroTester.testMacro(testName: testName, macros: testMacros)
+    @Test func columnifyMacro() {
+      MacroTester.testMacro(macros: testMacros)
+    }
+    
+    @Test func qualifiedColumnNameMacro() {
+      MacroTester.testMacro(macros: testMacros)
     }
 }
