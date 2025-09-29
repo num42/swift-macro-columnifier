@@ -1,23 +1,24 @@
 import MacroTester
 import SwiftSyntaxMacros
 import SwiftSyntaxMacrosTestSupport
-import XCTest
+import Testing
 
 #if canImport(ColumnifierMacros)
   import ColumnifierMacros
 
   let testMacros: [String: Macro.Type] = [
     "Columnify": ColumnifyMacro.self,
-    "QualifiedColumnName": QualifiedColumnNameMacro.self
+    "QualifiedColumnName": QualifiedColumnNameMacro.self,
   ]
 #endif
 
-final class ColumnifierTests: XCTestCase {
-  func testColumnifyMacro() throws {
-    testMacro(macros: testMacros)
+@Suite("Columnifier Macro Tests")
+struct ColumnifierTests {
+  @Test func columnifyMacro() {
+    MacroTester.testMacro(macros: testMacros)
   }
 
-  func testQualifiedColumnNameMacro() throws {
-    testMacro(macros: testMacros)
+  @Test func qualifiedColumnNameMacro() {
+    MacroTester.testMacro(macros: testMacros)
   }
 }
