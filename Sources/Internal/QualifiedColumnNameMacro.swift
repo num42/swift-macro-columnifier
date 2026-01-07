@@ -1,10 +1,7 @@
-import Foundation
-import SwiftCompilerPlugin
 import SwiftSyntax
-import SwiftSyntaxBuilder
 import SwiftSyntaxMacros
 
-public struct ColumnifyMacro: ExpressionMacro {
+public struct QualifiedColumnNameMacro: ExpressionMacro {
   public static func expansion(
     of node: some FreestandingMacroExpansionSyntax,
     in context: some MacroExpansionContext
@@ -13,9 +10,10 @@ public struct ColumnifyMacro: ExpressionMacro {
       fatalError("compiler bug: the macro does not have any arguments")
     }
 
+    let root = argument.as(KeyPathExprSyntax.self)!.root!.description
     let column = argument.as(KeyPathExprSyntax.self)!.components.description.replacingOccurrences(
       of: ".", with: "")
 
-    return "Column(\"\(raw: column)\")"
+    return "\"\(raw: root).\(raw: column)\""
   }
 }
