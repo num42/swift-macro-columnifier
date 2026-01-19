@@ -10,15 +10,15 @@ import Testing
     "Columnify": ColumnifyMacro.self,
     "QualifiedColumnName": QualifiedColumnNameMacro.self,
   ]
+
+  @Suite
+  struct ColumnifierMacroTests {
+    @Test func columnifyMacro() {
+      MacroTester.testMacro(macros: testMacros)
+    }
+
+    @Test func qualifiedColumnNameMacro() {
+      MacroTester.testMacro(macros: testMacros)
+    }
+  }
 #endif
-
-@Suite("Columnifier Macro Tests")
-struct ColumnifierTests {
-  @Test func columnifyMacro() {
-    MacroTester.testMacro(macros: testMacros)
-  }
-
-  @Test func qualifiedColumnNameMacro() {
-    MacroTester.testMacro(macros: testMacros)
-  }
-}
