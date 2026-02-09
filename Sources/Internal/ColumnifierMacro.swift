@@ -4,17 +4,17 @@ import SwiftSyntax
 import SwiftSyntaxMacros
 
 public struct ColumnifyMacro: ExpressionMacro {
-  enum MacroDiagnostic: String, DiagnosticMessage {
-    case requiresArgument = "#Columnify requires a key path argument"
+  public enum MacroDiagnostic: String, DiagnosticMessage {
+    case requiresArgument = "#Columnify requires an argument"
     case requiresKeyPath = "#Columnify requires a key path argument"
 
-    var message: String { rawValue }
+    public var message: String { rawValue }
 
-    var diagnosticID: MessageID {
+    public var diagnosticID: MessageID {
       MessageID(domain: "Columnifier", id: rawValue)
     }
 
-    var severity: DiagnosticSeverity { .error }
+    public var severity: DiagnosticSeverity { .error }
   }
 
   public static func expansion(

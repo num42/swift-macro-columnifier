@@ -3,18 +3,18 @@ import SwiftSyntax
 import SwiftSyntaxMacros
 
 public struct QualifiedColumnNameMacro: ExpressionMacro {
-  enum MacroDiagnostic: String, DiagnosticMessage {
-    case requiresArgument = "#QualifiedColumnName requires a key path argument"
+  public enum MacroDiagnostic: String, DiagnosticMessage {
+    case requiresArgument = "#QualifiedColumnName requires an argument"
     case requiresKeyPath = "#QualifiedColumnName requires a key path argument"
     case requiresRoot = "#QualifiedColumnName requires a root type in the key path"
 
-    var message: String { rawValue }
+    public var message: String { rawValue }
 
-    var diagnosticID: MessageID {
+    public var diagnosticID: MessageID {
       MessageID(domain: "Columnifier", id: rawValue)
     }
 
-    var severity: DiagnosticSeverity { .error }
+    public var severity: DiagnosticSeverity { .error }
   }
 
   public static func expansion(
