@@ -1,5 +1,5 @@
-import GRDB
-import GRDBSQLite
+public import GRDB
+internal import GRDBSQLite
 
 @freestanding(expression)
 public macro Columnify<S, T>(_ value: KeyPath<S, T>) -> Column =

@@ -1,6 +1,6 @@
-import SwiftDiagnostics
-import SwiftSyntax
-import SwiftSyntaxMacros
+public import SwiftDiagnostics
+public import SwiftSyntax
+public import SwiftSyntaxMacros
 
 public struct QualifiedColumnNameMacro: ExpressionMacro {
   public enum MacroDiagnostic: String, DiagnosticMessage {
