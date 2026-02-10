@@ -1,7 +1,7 @@
-import Foundation
-import SwiftDiagnostics
-import SwiftSyntax
-import SwiftSyntaxMacros
+internal import Foundation
+public import SwiftDiagnostics
+public import SwiftSyntax
+public import SwiftSyntaxMacros
 
 public struct ColumnifyMacro: ExpressionMacro {
   public enum MacroDiagnostic: String, DiagnosticMessage {
