@@ -6,6 +6,10 @@ internal import PackageDescription
 
 let name = "Columnifier"
 
+let swiftSettings: [SwiftSetting] = [
+  .enableUpcomingFeature("InternalImportsByDefault")
+]
+
 let package = Package(
   name: name,
   platforms: [.macOS(.v14), .iOS(.v13), .tvOS(.v13), .watchOS(.v6), .macCatalyst(.v13)],
@@ -30,7 +34,8 @@ let package = Package(
         .product(name: "SwiftDiagnostics", package: "swift-syntax"),
         .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
       ],
-      path: "Sources/Internal"
+      path: "Sources/Internal",
+      swiftSettings: swiftSettings
     ),
     .target(
       name: name,
@@ -39,17 +44,20 @@ let package = Package(
         .product(name: "GRDB", package: "GRDB.swift"),
         .product(name: "GRDBSQLite", package: "GRDB.swift"),
       ],
-      path: "Sources/External"
+      path: "Sources/External",
+      swiftSettings: swiftSettings
     ),
     .testTarget(
       name: "\(name)Tests",
       dependencies: [
         .target(name: "\(name)Macros"),
         .product(name: "MacroTester", package: "swift-macrotester"),
-        .product(name: "SwiftSyntaxMacrosTestSupport", package: "swift-syntax"),
+        .product(name: "SwiftSyntaxMacroExpansion", package: "swift-syntax"),
+        .product(name: "SwiftSyntaxMacrosGenericTestSupport", package: "swift-syntax"),
       ],
       path: "Tests/MacroTests",
-      resources: [.copy("Resources")]
+      resources: [.copy("Resources")],
+      swiftSettings: swiftSettings
     ),
   ]
 )
